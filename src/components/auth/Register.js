@@ -12,7 +12,8 @@ class Register extends Component {
     confirmpassword: "",
     errors: {
       blankfield: false,
-      matchedpassword: false
+      matchedpassword: false,
+      cognito: null
     }
   };
 
@@ -20,7 +21,8 @@ class Register extends Component {
     this.setState({
       errors: {
         blankfield: false,
-        matchedpassword: false
+        matchedpassword: false,
+        cognito: null
       }
     });
   };
