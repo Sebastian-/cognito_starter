@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import FormErrors from "../FormErrors";
 import Validate from "../util/Validation";
 import { Auth } from "aws-amplify";
+import { withRouter } from "react-router-dom";
 
 class LogIn extends Component {
   state = {
@@ -38,6 +39,8 @@ class LogIn extends Component {
     try {
       const user = await Auth.signIn(this.state.username, this.state.password);
       console.log(user);
+      this.props.auth.authenticateUser(true);
+      this.props.auth.setAuthUser(user);
       this.props.history.push("/");
     } catch (error) {
       let err = null;
@@ -113,4 +116,4 @@ class LogIn extends Component {
   }
 }
 
-export default LogIn;
+export default withRouter(LogIn);
