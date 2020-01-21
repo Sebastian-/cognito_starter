@@ -28,11 +28,7 @@ export default class Navbar extends Component {
                 <>
                   <p>Hello {this.props.auth.user.username}</p>
                   <div className="auth-buttons">
-                    <a
-                      href="/"
-                      onClick={this.logOutHandler}
-                      className="button is-light"
-                    >
+                    <a href="/changepassword" className="button is-light">
                       Change Password
                     </a>
                     <a
