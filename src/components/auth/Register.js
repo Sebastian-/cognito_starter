@@ -38,31 +38,32 @@ class Register extends Component {
       this.setState({
         errors: { ...this.state.errors, ...error }
       });
-    }
-    //Integrate Cognito here on valid form submission
-    //Take the state variables to pass to the signUp method
-    //we added email as a required field and this needs to be
-    //passed to the api as an attribute.
-    const { username, email, password } = this.state;
-    try {
-      const signUpResponse = await Auth.signUp({
-        username,
-        password,
-        attributes: {
-          email
-        }
-      });
-      console.log(signUpResponse);
-      this.props.history.push("/welcome");
-    } catch (error) {
-      let err = null;
-      error.message ? (err = error) : (err = { message: error });
-      this.setState(state => ({
-        errors: {
-          ...state.errors,
-          cognito: err
-        }
-      }));
+    } else {
+      //Integrate Cognito here on valid form submission
+      //Take the state variables to pass to the signUp method
+      //we added email as a required field and this needs to be
+      //passed to the api as an attribute.
+      const { username, email, password } = this.state;
+      try {
+        const signUpResponse = await Auth.signUp({
+          username,
+          password,
+          attributes: {
+            email
+          }
+        });
+        console.log(signUpResponse);
+        this.props.history.push("/welcome");
+      } catch (error) {
+        let err = null;
+        error.message ? (err = error) : (err = { message: error });
+        this.setState(state => ({
+          errors: {
+            ...state.errors,
+            cognito: err
+          }
+        }));
+      }
     }
   };
 

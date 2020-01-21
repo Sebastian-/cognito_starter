@@ -33,6 +33,13 @@ export default class Navbar extends Component {
                       onClick={this.logOutHandler}
                       className="button is-light"
                     >
+                      Change Password
+                    </a>
+                    <a
+                      href="/"
+                      onClick={this.logOutHandler}
+                      className="button is-light"
+                    >
                       Log Out
                     </a>
                   </div>
